@@ -32,13 +32,18 @@ public class SpinnerManager : MonoBehaviour
 
         Spinner spinnerScript = newSpinner.GetComponent<Spinner>();
         allSpinners.Add(spinnerScript);
-
-        GameObject newButton = Instantiate(buttonPrefab, buttonParent);
-        SpinButton spinButton = newButton.GetComponent<SpinButton>();
-        spinButton.SetTargetSpinner(spinnerScript);
+        
+        AddButton(spinnerScript); //now separated as its ow function
+  
+    }
+public void AddButton(Spinner targetSpinner)//Add the poochie spin inversion button
+{
+        GameObject newButton = Instantiate(buttonPrefab, buttonParent); //create a button from the prefab into the horizontal view
+        SpinButton spinButton = newButton.GetComponent<SpinButton>(); 
+        spinButton.SetTargetSpinner(targetSpinner);
 
         allButtons.Add(newButton);
-    }
+} 
 
     public void DeleteButton() // Call this to delete all poochies and buttons
     {
