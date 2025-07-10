@@ -24,7 +24,15 @@ public class SpinnerManager : MonoBehaviour
         }
     }
 
-    public void AddSpinner() // Press button add poochie
+    
+    public void AddSpinner() // add poochie and button
+    {
+        Spinner spinnerScript = AddPoochie(); //pooch
+        AddButton(spinnerScript); //add button and link it
+  
+    }
+
+    public Spinner AddPoochie()
     {
         Vector3 spawnPosition = spinnerSpawnPoint.position + GetRandomOffset();
         GameObject newSpinner = Instantiate(spinnerPrefab, spawnPosition, Quaternion.identity);
@@ -32,9 +40,7 @@ public class SpinnerManager : MonoBehaviour
 
         Spinner spinnerScript = newSpinner.GetComponent<Spinner>();
         allSpinners.Add(spinnerScript);
-        
-        AddButton(spinnerScript); //now separated as its ow function
-  
+        return spinnerScript;
     }
 public void AddButton(Spinner targetSpinner)//Add the poochie spin inversion button
 {
